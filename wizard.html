@@ -137,23 +137,101 @@ code{background:#f0f0f5;padding:2px 6px;border-radius:4px;font-size:12px;color:#
   <!-- STEP 4 -->
   <div class="panel" id="panel-4">
     <h2>Tutto pronto!</h2>
-    <p class="subtitle">Incolla questo codice nel tuo sito dove vuoi che appaia il form di prenotazione.</p>
+    <p class="subtitle">Il tuo sistema di prenotazioni e attivo. Condividi questo link con i tuoi clienti — funziona su qualsiasi dispositivo, senza installare nulla.</p>
     <div class="snippet-box"><pre id="snippet-code"></pre></div>
-    <button class="copy-btn" onclick="copySnippet()">Copia codice</button>
+    <button class="copy-btn" onclick="copySnippet()">Copia link</button>
     <br><br>
+    <p style="font-size:13px;color:#666;margin-bottom:16px">Puoi condividere questo link via WhatsApp, metterlo in bio su Instagram, su Google Business, o incollarlo nel tuo sito web.</p>
     <ul class="feature-list">
       <li>Prenotazioni H24 su Telegram</li>
-      <li>Calcolo preventivo live per il cliente</li>
+      <li>Calcolo preventivo automatico</li>
       <li>Cancellazione con codice univoco</li>
       <li>Smistamento automatico per garage e orario</li>
+      <li>Completamente gratuito — Powered by Charlotte</li>
     </ul>
     <div class="actions"><button class="btn btn-secondary" onclick="goTo(3)">&larr; Modifica garages</button></div>
   </div>
 </div>
 
 <script>
+var SUPABASE_URL = "https://smojycpsregpfrughbqp.supabase.co";
+var SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNtb2p5Y3BzcmVncGZydWdoYnFwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODIzMTM4MDIsImV4cCI6MjA5Nzg4OTgwMn0.CJaWczpfFzMyPYJzD2SS8haeW_1uY1NIK8BEk0_Gib0";
+
 var garageCount = 0;
 var state = { nome_azienda:"", email:"", bot_token:"", garages:[], token:null };
+
+function generaToken() {
+  var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  var t = "ypk_";
+  for (var i = 0; i < 16; i++) t += chars.charAt(Math.floor(Math.random() * chars.length));
+  return t;
+}
+
+function generaId(prefix) {
+  var chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+  var id = prefix + "_";
+  for (var i = 0; i < 8; i++) id += chars.charAt(Math.floor(Math.random() * chars.length));
+  return id;
+}
+
+function generaSlug(nome) {
+  return nome.toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .substring(0, 30);
+}
+
+function sbPost(table, body) {
+  return fetch(SUPABASE_URL + "/rest/v1/" + table, {
+    method: "POST",
+    headers: {
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY,
+      "Content-Type": "application/json",
+      "Prefer": "return=representation",
+    },
+    body: JSON.stringify(body),
+  }).then(function(r) { return r.json(); });
+}
+
+function salvaClienteSuSupabase(nomeAzienda, email, botToken, garagesArray) {
+  var token = generaToken();
+  var slug = generaSlug(nomeAzienda);
+
+  return sbPost("clienti", {
+    token: token,
+    nome_azienda: nomeAzienda,
+    email_proprietario: email,
+    piano: "free",
+    bot_token: botToken,
+    attivo: true,
+    slug: slug,
+  }).then(function(res) {
+    if (res && res.error) throw new Error(res.error.message || "Errore salvataggio cliente");
+
+    // Salva garages in sequenza
+    var promises = garagesArray.map(function(g) {
+      return sbPost("garages", {
+        id: generaId("grg"),
+        token_cliente: token,
+        nome: g.nome,
+        chat_id_telegram: g.chat_id,
+        orario_chiusura: g.orario_chiusura || null,
+        overflow_chat_id: g.overflow_chat_id || null,
+        overflow_ora: g.overflow_ora || null,
+        tariffe: g.tariffe || null,
+        ore_giornaliero: g.ore_giornaliero || 4,
+        tol_ora: g.tol_ora || 15,
+        tol_gg: g.tol_gg || 30,
+      });
+    });
+
+    return Promise.all(promises).then(function() {
+      return { token: token, slug: slug };
+    });
+  });
+}
 
 var VEICOLI = [
   { key:"moto",    label:"Moto / Scooter" },
@@ -315,7 +393,30 @@ function goTo(step) {
       if (!state.garages[i].nome || !state.garages[i].chat_id) { inv = true; break; }
     }
     if (inv) { alert("Ogni garage deve avere nome e Chat ID."); return; }
-    buildSnippet();
+
+    // Mostra loading
+    var btn4 = document.querySelector("#panel-3 .btn-primary");
+    if (btn4) { btn4.disabled = true; btn4.textContent = "Salvataggio in corso..."; }
+
+    salvaClienteSuSupabase(state.nome_azienda, state.email, state.bot_token, state.garages)
+    .then(function(result) {
+      buildSnippet(result.token, result.slug);
+      // Procedi allo step 4
+      for (var i = 1; i <= 4; i++) {
+        document.getElementById("panel-" + i).classList.remove("active");
+        var si = document.getElementById("s" + i);
+        si.classList.remove("active","done");
+        if (i < 4) si.classList.add("done");
+        if (i === 4) si.classList.add("active");
+      }
+      document.getElementById("panel-4").classList.add("active");
+      window.scrollTo(0,0);
+    })
+    .catch(function(err) {
+      alert("Errore durante il salvataggio: " + (err.message || err));
+      if (btn4) { btn4.disabled = false; btn4.textContent = "Continua →"; }
+    });
+    return; // Blocca il normale flusso goTo
   }
   for (var i = 1; i <= 4; i++) {
     document.getElementById("panel-" + i).classList.remove("active");
@@ -328,10 +429,11 @@ function goTo(step) {
   window.scrollTo(0,0);
 }
 
-function buildSnippet() {
-  var token = "ypk_" + Math.random().toString(36).substr(2,16);
+function buildSnippet(token, slug) {
   state.token = token;
-  var snippet = '<script src="https://charlotteparkingapp.github.io/youparking/widget.js" data-key="' + token + '"><\/script>';
+  state.slug = slug;
+  var bookingUrl = "https://charlotteparkingapp.github.io/youparking/booking.html#" + slug;
+  var snippet = bookingUrl;
   document.getElementById("snippet-code").textContent = snippet;
 }
 
