@@ -4,7 +4,7 @@
   var currentScript = scripts[scripts.length - 1];
   var TOKEN = currentScript.getAttribute("data-key");
   var LANG  = currentScript.getAttribute("data-lang") || "it";
-  var GAS_URL = "https://script.google.com/macros/s/AKfycbyG9Awdp3OXOUWPvXtJrEd9ISfhYVe4yQEQxxaceTEi8ETrOs2PpKxgavBauqnRgDkzaQ/exec";
+  var GAS_URL = "https://script.google.com/macros/s/AKfycbyo4h8vqqBaQMv4_iSGPZ6zkl31G7zaRwKDoPioPeMXSm9L5B4yCOMbIHg2o5O8c_9QvA/exec";
 
   if (!TOKEN) { console.error("[YouParking] data-key mancante."); return; }
 
