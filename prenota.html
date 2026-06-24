@@ -335,7 +335,7 @@ function mountForm(garages, nomeAzienda, token) {
     var btn = document.getElementById("yp-cbtn");
     if (!codice) { showCMsg("yp-cerr","Inserisci il codice prenotazione."); return; }
     btn.disabled=true; btn.textContent="Cancellazione in corso...";
-    fetch(GAS_URL,{method:"POST",headers:{"Content-Type":"application/json"},
+    fetch(GAS_URL,{method:"POST",headers:{"Content-Type":"text/plain"},
       body:JSON.stringify({action:"cancel",token:clientToken,codice:codice})})
     .then(function(r){return r.json();})
     .then(function(data){
@@ -365,7 +365,7 @@ if (!slug || slug === "prenota") {
 } else {
   fetch(GAS_URL, {
     method: "POST",
-    headers: {"Content-Type": "application/json"},
+    headers: {"Content-Type": "text/plain"},
     body: JSON.stringify({ action: "getConfigBySlug", slug: slug }),
   })
     .then(function(r){return r.json();})
