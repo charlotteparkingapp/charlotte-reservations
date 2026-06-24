@@ -94,7 +94,17 @@ code{background:#f0f0f5;padding:2px 6px;border-radius:4px;font-size:12px;color:#
   <div class="panel" id="panel-3">
     <h2>Garages e tariffe</h2>
     <p class="subtitle">Configura ogni garage con il suo gruppo Telegram e le sue tariffe. Il sistema calcolera automaticamente il costo per il cliente.</p>
-    <div class="info-box"><strong>Come funziona il calcolo?</strong><br>Sotto la soglia di ore configurata si paga a ore. Superata la soglia scatta la tariffa giornaliera (24h). Dopo ogni giornata c'e una tolleranza, poi si ricomincia a contare ore fino alla soglia, e cosi a catena.</div>
+    <div class="info-box" style="margin-bottom:12px">
+  <strong>Prima di iniziare: crea i gruppi Telegram</strong><br>
+  Per ogni garage devi avere un gruppo Telegram dedicato (es. "Garage Fiesolana - Prenotazioni"). Le notifiche di prenotazione arriveranno li.<br><br>
+  <strong>Come fare:</strong><br>
+  1. Apri Telegram e crea un nuovo gruppo<br>
+  2. Dagli un nome chiaro (es. "Garage Centro Prenotazioni")<br>
+  3. Aggiungi il tuo bot come membro e rendilo amministratore<br>
+  4. Aggiungi anche te stesso e i tuoi colleghi che devono ricevere le notifiche<br><br>
+  Ripeti per ogni garage. Poi torna qui e inserisci i dati.
+</div>
+<div class="info-box"><strong>Come funziona il calcolo tariffe?</strong><br>Sotto la soglia di ore configurata si paga a ore. Superata la soglia scatta la tariffa giornaliera (24h). Dopo ogni giornata c'e una tolleranza, poi si ricomincia a contare ore fino alla soglia, e cosi a catena.</div>
     <div id="garage-list"></div>
     <button class="btn-add" onclick="addGarage()">+ Aggiungi garage</button>
     <div class="actions">
