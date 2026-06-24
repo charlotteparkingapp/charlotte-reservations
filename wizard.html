@@ -26,27 +26,27 @@ h2{font-size:20px;font-weight:600;margin-bottom:8px}
 label{display:block;font-size:13px;font-weight:500;color:#444;margin-bottom:5px}
 input,select{width:100%;padding:10px 13px;border:1px solid #d0d0d0;border-radius:8px;font-size:14px;color:#111;background:#fff}
 input:focus,select:focus{outline:none;border-color:#4f46e5;box-shadow:0 0 0 3px rgba(79,70,229,.1)}
-.hint{font-size:12px;color:#888;margin-top:4px}
+.hint{font-size:12px;color:#666;margin-top:5px;line-height:1.6}
 code{background:#f0f0f5;padding:2px 6px;border-radius:4px;font-size:12px;color:#4f46e5}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 .tip{position:relative;display:inline-block}
 .tip-icon{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#4f46e5;color:#fff;border-radius:50%;font-size:10px;font-weight:700;cursor:help;margin-left:5px;vertical-align:middle}
-.tip-box{display:none;position:absolute;left:24px;top:-4px;background:#1e1e2e;color:#a9b1d6;font-size:12px;line-height:1.6;padding:10px 14px;border-radius:8px;width:260px;z-index:100;font-weight:400}
+.tip-box{display:none;position:absolute;left:24px;top:-4px;background:#1e1e2e;color:#a9b1d6;font-size:12px;line-height:1.6;padding:10px 14px;border-radius:8px;width:260px;z-index:100}
 .tip:hover .tip-box{display:block}
-.garage-card{background:#f8f8fb;border:1px solid #e5e5e5;border-radius:12px;padding:20px;margin-bottom:16px;position:relative}
+.garage-card{background:#f8f8fb;border:1px solid #e5e5e5;border-radius:12px;padding:20px;margin-bottom:16px}
 .garage-card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
 .garage-card-header h4{font-size:15px;font-weight:600}
 .remove-btn{background:none;border:none;color:#ccc;font-size:20px;cursor:pointer;line-height:1;padding:0}
 .remove-btn:hover{color:#e53e3e}
 .section-label{font-size:12px;font-weight:700;color:#4f46e5;text-transform:uppercase;letter-spacing:.5px;margin:16px 0 10px;padding-top:12px;border-top:1px solid #e5e5e5}
-.tariffa-row{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
-.tariffa-row label{font-size:12px;color:#555;font-weight:500;margin:0}
-.tariffa-row .t2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.t2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.tariffa-row{margin-bottom:8px}
+.tariffa-row label{font-size:12px;color:#555;font-weight:500;margin-bottom:4px}
 .tariffa-row input{padding:7px 10px;font-size:13px}
-.overflow-toggle label{display:flex;align-items:center;gap:8px;font-size:13px;color:#555;font-weight:400;cursor:pointer}
+.overflow-toggle label{display:flex;align-items:center;gap:8px;font-size:13px;color:#555;cursor:pointer;font-weight:400}
 .overflow-fields{display:none}.overflow-fields.show{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.btn-add{width:100%;padding:10px;border:2px dashed #d0d0d0;border-radius:8px;background:none;color:#666;font-size:14px;cursor:pointer;margin-bottom:16px;transition:all .15s}
+.btn-add{width:100%;padding:10px;border:2px dashed #d0d0d0;border-radius:8px;background:none;color:#666;font-size:14px;cursor:pointer;margin-bottom:16px}
 .btn-add:hover{border-color:#4f46e5;color:#4f46e5}
 .actions{display:flex;gap:10px;margin-top:28px}
 .btn{flex:1;padding:11px;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer}
@@ -57,8 +57,12 @@ code{background:#f0f0f5;padding:2px 6px;border-radius:4px;font-size:12px;color:#
 .copy-btn{padding:8px 14px;background:#4f46e5;color:#fff;border:none;border-radius:6px;font-size:13px;cursor:pointer}
 .feature-list{list-style:none;margin:16px 0}
 .feature-list li{padding:5px 0;font-size:14px;color:#444;display:flex;align-items:center;gap:8px}
-.feature-list li::before{content:"✓";color:#4f46e5;font-weight:700}
-.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px 16px;margin-bottom:20px;font-size:13px;color:#1e40af;line-height:1.6}
+.feature-list li::before{content:"checkmark";color:#4f46e5;font-weight:700}
+.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:14px 16px;margin-bottom:16px;font-size:13px;color:#1e40af;line-height:1.7}
+.info-box strong{font-weight:600;display:block;margin-bottom:4px}
+.chatid-hint{background:#f8f8fb;border:1px solid #e5e5e5;border-radius:8px;padding:12px 14px;margin-top:8px;font-size:12px;color:#555;line-height:1.8}
+.chatid-hint strong{color:#111}
+.chatid-hint code{background:#e8eaf6;color:#4f46e5}
 </style>
 </head>
 <body>
@@ -71,6 +75,7 @@ code{background:#f0f0f5;padding:2px 6px;border-radius:4px;font-size:12px;color:#
     <div class="step-item" id="s4"><div class="step-dot">4</div><div class="step-label">Snippet</div></div>
   </div>
 
+  <!-- STEP 1 -->
   <div class="panel active" id="panel-1">
     <h2>La tua azienda</h2>
     <p class="subtitle">Inserisci i dati principali del tuo parcheggio.</p>
@@ -79,32 +84,38 @@ code{background:#f0f0f5;padding:2px 6px;border-radius:4px;font-size:12px;color:#
     <div class="actions"><button class="btn btn-primary" onclick="goTo(2)">Continua &rarr;</button></div>
   </div>
 
+  <!-- STEP 2 -->
   <div class="panel" id="panel-2">
     <h2>Il tuo bot Telegram</h2>
     <p class="subtitle">YouParking usa un bot Telegram per inviare le notifiche. Segui questi passi.</p>
-    <div class="field"><label>Passo 1 — Apri @BotFather su Telegram</label><p class="hint">Cerca <code>@BotFather</code> e invia <code>/newbot</code></p></div>
-    <div class="field"><label>Passo 2 — Assegna un nome al bot</label><p class="hint">Es. <code>ParcheggioCentro_bot</code>. BotFather ti dara un token API.</p></div>
-    <div class="field"><label>Passo 3 — Incolla il token *</label><input type="text" id="bot_token" placeholder="123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw"><p class="hint">Formato <code>numeri:lettere</code>. Non condividerlo.</p></div>
+    <div class="info-box">
+      <strong>Come creare il bot:</strong>
+      1. Apri Telegram e cerca <code>@BotFather</code><br>
+      2. Invia il comando <code>/newbot</code><br>
+      3. Scegli un nome per il bot (es. ParcheggioCentroBot)<br>
+      4. BotFather ti risponde con un token — copialo qui sotto
+    </div>
+    <div class="field"><label>Token del bot *</label><input type="text" id="bot_token" placeholder="123456789:AAHdqTcvCH1vGWJxfSeofSAs0K5PALDsaw"><p class="hint">Formato: numeri:lettere. Non condividerlo con nessuno.</p></div>
     <div class="actions">
       <button class="btn btn-secondary" onclick="goTo(1)">&larr; Indietro</button>
       <button class="btn btn-primary" onclick="goTo(3)">Continua &rarr;</button>
     </div>
   </div>
 
+  <!-- STEP 3 -->
   <div class="panel" id="panel-3">
     <h2>Garages e tariffe</h2>
-    <p class="subtitle">Configura ogni garage con il suo gruppo Telegram e le sue tariffe. Il sistema calcolera automaticamente il costo per il cliente.</p>
-    <div class="info-box" style="margin-bottom:12px">
-  <strong>Prima di iniziare: crea i gruppi Telegram</strong><br>
-  Per ogni garage devi avere un gruppo Telegram dedicato (es. "Garage Fiesolana - Prenotazioni"). Le notifiche di prenotazione arriveranno li.<br><br>
-  <strong>Come fare:</strong><br>
-  1. Apri Telegram e crea un nuovo gruppo<br>
-  2. Dagli un nome chiaro (es. "Garage Centro Prenotazioni")<br>
-  3. Aggiungi il tuo bot come membro e rendilo amministratore<br>
-  4. Aggiungi anche te stesso e i tuoi colleghi che devono ricevere le notifiche<br><br>
-  Ripeti per ogni garage. Poi torna qui e inserisci i dati.
-</div>
-<div class="info-box"><strong>Come funziona il calcolo tariffe?</strong><br>Sotto la soglia di ore configurata si paga a ore. Superata la soglia scatta la tariffa giornaliera (24h). Dopo ogni giornata c'e una tolleranza, poi si ricomincia a contare ore fino alla soglia, e cosi a catena.</div>
+    <p class="subtitle">Configura ogni garage con il suo gruppo Telegram e le sue tariffe.</p>
+
+    <div class="info-box">
+      <strong>Prima di iniziare: crea un gruppo Telegram per ogni garage</strong>
+      Per ogni garage devi avere un gruppo Telegram dedicato dove arriveranno le notifiche.<br>
+      1. Apri Telegram e crea un nuovo gruppo (es. "Garage Fiesolana Prenotazioni")<br>
+      2. Aggiungi il tuo bot come membro e rendilo amministratore<br>
+      3. Aggiungi anche te stesso e i colleghi che devono ricevere le notifiche<br>
+      4. Ripeti per ogni garage, poi torna qui
+    </div>
+
     <div id="garage-list"></div>
     <button class="btn-add" onclick="addGarage()">+ Aggiungi garage</button>
     <div class="actions">
@@ -113,6 +124,7 @@ code{background:#f0f0f5;padding:2px 6px;border-radius:4px;font-size:12px;color:#
     </div>
   </div>
 
+  <!-- STEP 4 -->
   <div class="panel" id="panel-4">
     <h2>Tutto pronto!</h2>
     <p class="subtitle">Incolla questo codice nel tuo sito dove vuoi che appaia il form di prenotazione.</p>
@@ -142,15 +154,23 @@ var VEICOLI = [
   { key:"van",     label:"Van / Furgone" },
 ];
 
-var TOOLTIPS = {
-  regole: "Configura dopo quante ore scatta la tariffa giornaliera e le tolleranze per evitare di addebitare ore o giorni in piu per piccoli ritardi.",
-  ore_gg: "Dopo quante ore di sosta scatta la tariffa giornaliera (24h). Default: 4 ore. Sotto questa soglia si paga a ore. Dopo ogni giornata si ricomincia a contare: superata di nuovo la soglia scatta un altro giornaliero. Esempio con soglia 4h: 3h = 3 ore a tariffa oraria. 4h = 1 giornata. 1 giorno + 5h = 2 giornate.",
-  tol_ora: "Minuti di tolleranza dopo ogni ora scattata. Default: 15 min. Esempio: il cliente esce dopo 2h e 12 minuti, paga solo 2 ore. Se esce dopo 2h e 18 minuti paga 3 ore. La prima ora e sempre piena: si paga per intero indipendentemente da quando il cliente esce.",
-  tol_gg: "Minuti di tolleranza dopo ogni giornata di 24h. Default: 30 min. Esempio: il cliente esce dopo 1 giorno e 28 minuti, paga solo 1 giornata (dentro tolleranza). Se esce dopo 1 giorno e 31 minuti paga 1 giornata piu 1 ora. Dopo la soglia di ore totali scatta un nuovo giornaliero.",
-};
+var TIP_ORE_GG   = "Dopo quante ore di sosta scatta la tariffa giornaliera (24h). Default: 4 ore. Sotto questa soglia si paga a ore. Superata la soglia scatta un giornaliero. Dopo ogni giornata si ricomincia: se si supera di nuovo la soglia scatta un altro giornaliero.";
+var TIP_TOL_ORA  = "Minuti di tolleranza dopo ogni ora scattata. Default: 15 min. Esempio: uscita dopo 2h e 12 min paga 2 ore. Uscita dopo 2h e 18 min paga 3 ore. La prima ora e sempre piena.";
+var TIP_TOL_GG   = "Minuti di tolleranza dopo ogni giornata di 24h. Default: 30 min. Esempio: uscita dopo 1 giorno e 28 min paga 1 giornata. Uscita dopo 1 giorno e 31 min paga 1 giornata piu 1 ora.";
+var TIP_TARIFFE  = "Configura le tariffe orarie e giornaliere per ogni tipo di veicolo. Il sistema le usera per calcolare il preventivo in automatico.";
 
-function tip(key) {
-  return '<span class="tip"><span class="tip-icon">?</span><span class="tip-box">' + TOOLTIPS[key] + '</span></span>';
+var CHATID_HINT =
+  '<div class="chatid-hint">' +
+  '<strong>Come trovare il Chat ID:</strong><br>' +
+  '1. Manda un messaggio nel gruppo Telegram del garage<br>' +
+  '2. Apri nel browser: <code>https://api.telegram.org/botTOKEN/getUpdates</code><br>' +
+  '&nbsp;&nbsp;&nbsp;(sostituisci TOKEN con il token del tuo bot)<br>' +
+  '3. Cerca il campo <code>"chat"</code> poi <code>"id"</code><br>' +
+  '4. Il Chat ID e un numero negativo tipo <code>-1001234567890</code>' +
+  '</div>';
+
+function tip(testo) {
+  return '<span class="tip"><span class="tip-icon">?</span><span class="tip-box">' + testo + '</span></span>';
 }
 
 function addGarage() {
@@ -160,35 +180,40 @@ function addGarage() {
   div.className = "garage-card";
   div.id = "garage-" + idx;
 
-  var tariffeHtml = VEICOLI.map(function(v) {
-    return '<div class="tariffa-row">' +
-      '<label>' + v.label + '</label>' +
-      '<div class="t2">' +
-        '<input type="number" min="0" step="0.5" placeholder="Euro/ora" class="t-ora t-' + v.key + '-ora">' +
-        '<input type="number" min="0" step="0.5" placeholder="Euro/giorno" class="t-gg t-' + v.key + '-gg">' +
-      '</div>' +
-    '</div>';
-  }).join("");
+  var tariffeHtml = "";
+  for (var i = 0; i < VEICOLI.length; i++) {
+    var v = VEICOLI[i];
+    tariffeHtml +=
+      '<div class="tariffa-row">' +
+        '<label>' + v.label + '</label>' +
+        '<div class="t2">' +
+          '<input type="number" min="0" step="0.5" placeholder="Euro/ora" class="t-ora t-' + v.key + '-ora">' +
+          '<input type="number" min="0" step="0.5" placeholder="Euro/giorno" class="t-gg t-' + v.key + '-gg">' +
+        '</div>' +
+      '</div>';
+  }
 
   div.innerHTML =
-    '<div class="garage-card-header"><h4>Garage ' + idx + '</h4><button class="remove-btn" onclick="removeGarage(' + idx + ')">x</button></div>' +
-    '<div class="field"><label>Nome del garage *</label><input type="text" class="g-nome" placeholder="Es. Garage Centro"></div>' +
-    '<div class="row2">' +
-      '<div class="field">
-  <label>Chat ID Telegram *</label>
-  <input type="text" class="g-chatid" placeholder="-1001234567890">
-  <p class="hint" style="line-height:1.6;margin-top:6px">
-    <strong>Come trovarlo:</strong><br>
-    1. Crea un gruppo Telegram per questo garage (es. "Garage Centro - Prenotazioni")<br>
-    2. Aggiungi il tuo bot al gruppo come amministratore<br>
-    3. Manda un messaggio qualsiasi nel gruppo<br>
-    4. Apri questo link nel browser: <strong>https://api.telegram.org/bot<span style="color:#4f46e5">TOKEN</span>/getUpdates</strong> (sostituisci TOKEN con il token del tuo bot)<br>
-    5. Cerca nel risultato il campo <code>"chat"</code> &rarr; <code>"id"</code> — e un numero negativo come <code>-1001234567890</code>
-  </p>
-</div>' +
-      '<div class="field"><label>Orario chiusura</label><input type="time" class="g-chiusura"></div>' +
+    '<div class="garage-card-header">' +
+      '<h4>Garage ' + idx + '</h4>' +
+      '<button class="remove-btn" onclick="removeGarage(' + idx + ')">&#x2715;</button>' +
     '</div>' +
-    '<div class="section-label">Tariffe (IVA inclusa) ' + tip("regole") + '</div>' +
+    '<div class="field">' +
+      '<label>Nome del garage *</label>' +
+      '<input type="text" class="g-nome" placeholder="Es. Garage Centro">' +
+    '</div>' +
+    '<div class="row2">' +
+      '<div class="field">' +
+        '<label>Chat ID Telegram *</label>' +
+        '<input type="text" class="g-chatid" placeholder="-1001234567890">' +
+        CHATID_HINT +
+      '</div>' +
+      '<div class="field">' +
+        '<label>Orario chiusura</label>' +
+        '<input type="time" class="g-chiusura">' +
+      '</div>' +
+    '</div>' +
+    '<div class="section-label">Tariffe (IVA inclusa) ' + tip(TIP_TARIFFE) + '</div>' +
     '<div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:8px">' +
       '<span style="font-size:11px;color:#888;text-align:center">Euro/ora</span>' +
       '<span style="font-size:11px;color:#888;text-align:center">Euro/giorno</span>' +
@@ -196,11 +221,22 @@ function addGarage() {
     tariffeHtml +
     '<div class="section-label">Regole di calcolo</div>' +
     '<div class="row3">' +
-      '<div class="field"><label>Ore prima del giornaliero ' + tip("ore_gg") + '</label><input type="number" min="1" max="24" value="4" class="g-ore-gg"></div>' +
-      '<div class="field"><label>Tolleranza oraria (min) ' + tip("tol_ora") + '</label><input type="number" min="0" max="59" value="15" class="g-tol-ora"></div>' +
-      '<div class="field"><label>Tolleranza giornaliera (min) ' + tip("tol_gg") + '</label><input type="number" min="0" max="59" value="30" class="g-tol-gg"></div>' +
+      '<div class="field">' +
+        '<label>Ore prima del giornaliero ' + tip(TIP_ORE_GG) + '</label>' +
+        '<input type="number" min="1" max="24" value="4" class="g-ore-gg">' +
+      '</div>' +
+      '<div class="field">' +
+        '<label>Tolleranza oraria (min) ' + tip(TIP_TOL_ORA) + '</label>' +
+        '<input type="number" min="0" max="59" value="15" class="g-tol-ora">' +
+      '</div>' +
+      '<div class="field">' +
+        '<label>Tolleranza giornaliera (min) ' + tip(TIP_TOL_GG) + '</label>' +
+        '<input type="number" min="0" max="59" value="30" class="g-tol-gg">' +
+      '</div>' +
     '</div>' +
-    '<div class="overflow-toggle"><label><input type="checkbox" class="g-overflow-check" onchange="toggleOverflow(this,' + idx + ')"> Notifica altro garage se arrivo fuori orario</label></div>' +
+    '<div class="overflow-toggle">' +
+      '<label><input type="checkbox" class="g-overflow-check" onchange="toggleOverflow(this,' + idx + ')"> Notifica altro garage se arrivo fuori orario</label>' +
+    '</div>' +
     '<div class="overflow-fields" id="overflow-' + idx + '">' +
       '<div class="field"><label>Chat ID destinazione</label><input type="text" class="g-overflow-id" placeholder="-1009876543210"></div>' +
       '<div class="field"><label>Dopo le ore</label><input type="time" class="g-overflow-ora"></div>' +
@@ -220,46 +256,55 @@ function removeGarage(idx) {
 }
 
 function collectGarages() {
+  var rows = document.querySelectorAll(".garage-card");
   var result = [];
-  document.querySelectorAll(".garage-card").forEach(function(card) {
+  for (var r = 0; r < rows.length; r++) {
+    var card = rows[r];
     var tariffe = {};
-    VEICOLI.forEach(function(v) {
+    for (var i = 0; i < VEICOLI.length; i++) {
+      var v = VEICOLI[i];
       tariffe[v.key] = {
         ora: parseFloat(card.querySelector(".t-" + v.key + "-ora").value) || 0,
         gg:  parseFloat(card.querySelector(".t-" + v.key + "-gg").value)  || 0,
       };
-    });
+    }
     var oc = card.querySelector(".g-overflow-check");
     result.push({
-      nome:             card.querySelector(".g-nome").value.trim(),
-      chat_id:          card.querySelector(".g-chatid").value.trim(),
-      orario_chiusura:  card.querySelector(".g-chiusura").value || "",
-      ore_giornaliero:  parseInt(card.querySelector(".g-ore-gg").value) || 4,
-      tol_ora:          parseInt(card.querySelector(".g-tol-ora").value) || 15,
-      tol_gg:           parseInt(card.querySelector(".g-tol-gg").value)  || 30,
-      tariffe:          tariffe,
+      nome:            card.querySelector(".g-nome").value.trim(),
+      chat_id:         card.querySelector(".g-chatid").value.trim(),
+      orario_chiusura: card.querySelector(".g-chiusura").value || "",
+      ore_giornaliero: parseInt(card.querySelector(".g-ore-gg").value) || 4,
+      tol_ora:         parseInt(card.querySelector(".g-tol-ora").value) || 15,
+      tol_gg:          parseInt(card.querySelector(".g-tol-gg").value)  || 30,
+      tariffe:         tariffe,
       overflow_chat_id: oc && oc.checked ? card.querySelector(".g-overflow-id").value.trim() : "",
       overflow_ora:     oc && oc.checked ? card.querySelector(".g-overflow-ora").value : "",
     });
-  });
+  }
   return result;
 }
 
 function goTo(step) {
   if (step === 2) {
-    state.nome_azienda = document.getElementById("nome_azienda").value.trim();
-    state.email = document.getElementById("email_proprietario").value.trim();
-    if (!state.nome_azienda || !state.email) { alert("Compila tutti i campi obbligatori."); return; }
+    var n = document.getElementById("nome_azienda").value.trim();
+    var e = document.getElementById("email_proprietario").value.trim();
+    if (!n || !e) { alert("Compila tutti i campi obbligatori."); return; }
+    state.nome_azienda = n;
+    state.email = e;
   }
   if (step === 3) {
-    state.bot_token = document.getElementById("bot_token").value.trim();
-    if (!state.bot_token) { alert("Inserisci il token del bot Telegram."); return; }
+    var bt = document.getElementById("bot_token").value.trim();
+    if (!bt) { alert("Inserisci il token del bot Telegram."); return; }
+    state.bot_token = bt;
   }
   if (step === 4) {
     state.garages = collectGarages();
     if (state.garages.length === 0) { alert("Aggiungi almeno un garage."); return; }
-    var invalid = state.garages.find(function(g) { return !g.nome || !g.chat_id; });
-    if (invalid) { alert("Ogni garage deve avere nome e Chat ID."); return; }
+    var inv = false;
+    for (var i = 0; i < state.garages.length; i++) {
+      if (!state.garages[i].nome || !state.garages[i].chat_id) { inv = true; break; }
+    }
+    if (inv) { alert("Ogni garage deve avere nome e Chat ID."); return; }
     buildSnippet();
   }
   for (var i = 1; i <= 4; i++) {
