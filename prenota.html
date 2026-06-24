@@ -92,10 +92,13 @@ var clientToken = "";
 
 // Leggi slug dall'URL: /prenota/cityparking → slug = cityparking
 function getSlug() {
-  // Prova prima il query param ?slug=xxx (GitHub Pages)
+  // Legge slug dall'hash: prenota.html#cityparking → "cityparking"
+  var hash = window.location.hash.replace("#", "").trim();
+  if (hash) return hash;
+  // Fallback query param per dominio custom: ?slug=cityparking
   var params = new URLSearchParams(window.location.search);
   if (params.get("slug")) return params.get("slug");
-  // Fallback: ultima parte del pathname (dominio custom)
+  // Fallback pathname per dominio custom: /prenota/cityparking
   var parts = window.location.pathname.split("/").filter(Boolean);
   var last = parts[parts.length - 1] || "";
   if (last && last !== "prenota.html") return last;
