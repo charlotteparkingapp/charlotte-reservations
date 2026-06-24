@@ -192,16 +192,16 @@ function addGarage() {
     '<div class="section-label">Regole di calcolo ' + tooltip('Configura dopo quante ore scatta la tariffa giornaliera e le tolleranze per evitare di addebitare ore/giorni in più per piccoli ritardi.') + '</div>' +
     '<div class="row3">' +
       '<div class="field">' +
-        '<label>Ore → giornaliero ' + tooltip('Dopo quante ore di sosta scatta la tariffa giornaliera invece di continuare a sommare ore. Default: 4 ore. Esempio: se un cliente resta 5 ore e hai impostato 4, paga una giornata intera invece di 5 ore.') + '</label>' +
+        '<label>Ore → giornaliero ' + tooltip('Dopo quante ore di sosta scatta la tariffa giornaliera (24h). Default: 4 ore. Sotto questa soglia si paga a ore. Uguale dopo ogni giornata: se il cliente supera di nuovo questa soglia, scatta un'altra giornata. Esempio con soglia 4h: 3h → 3 ore a tariffa oraria. 4h → 1 giornata. 1 giorno + 5h → 2 giornate.') + '</label>' +
         '<input type="number" min="1" max="24" value="4" class="g-ore-gg" placeholder="4">' +
       '</div>' +
       '<div class="field">' +
-        '<label>Tolleranza oraria ' + tooltip('Minuti di "grazia" dopo ogni ora scattata. Default: 15 min. Esempio: il cliente esce dopo 2h e 12 minuti → paga solo 2 ore. Se esce dopo 2h e 18 minuti → paga 3 ore. La prima ora non ha tolleranza: si paga sempre per intero.') + '</label>' +
+        '<label>Tolleranza oraria ' + tooltip('Minuti di tolleranza dopo ogni ora scattata. Default: 15 min. Esempio: il cliente esce dopo 2h e 12 minuti → paga solo 2 ore. Se esce dopo 2h e 18 minuti → paga 3 ore. La prima ora è sempre piena: si paga per intero indipendentemente da quando il cliente esce.') + '</label>' +
         '<input type="number" min="0" max="59" value="15" class="g-tol-ora" placeholder="15">' +
       '</div>' +
       '<div class="field">' +
-        '<label>Tolleranza giornaliera ' + tooltip('Minuti di "grazia" dopo ogni giornata scattata. Default: 20 min. Esempio: il cliente esce dopo 1 giorno e 18 minuti → paga solo 1 giornata. Se esce dopo 1 giorno e 23 minuti → paga 1 giornata + 1 ora.') + '</label>' +
-        '<input type="number" min="0" max="59" value="20" class="g-tol-gg" placeholder="20">' +
+        '<label>Tolleranza giornaliera ' + tooltip('Minuti di tolleranza dopo ogni giornata di 24h. Default: 30 min. Esempio: il cliente esce dopo 1 giorno e 28 minuti → paga solo 1 giornata (dentro tolleranza). Se esce dopo 1 giorno e 31 minuti → paga 1 giornata + 1 ora. Dopo 4 ore totali dall'inizio del periodo post-giornaliero scatta un nuovo giornaliero.') + '</label>' +
+        '<input type="number" min="0" max="59" value="30" class="g-tol-gg" placeholder="30">' +
       '</div>' +
     '</div>' +
 
